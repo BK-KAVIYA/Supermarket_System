@@ -1,4 +1,4 @@
-package System;
+package com.supermarket.system;
 
 
 import java.sql.Connection;

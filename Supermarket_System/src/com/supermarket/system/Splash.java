@@ -1,5 +1,5 @@
 
-package System;
+package com.supermarket.system;
 
 import java.util.logging.Level;
 import java.util.logging.Logger;
