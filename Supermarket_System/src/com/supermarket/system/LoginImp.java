@@ -32,6 +32,7 @@ public class LoginImp implements LoginDAO{
                             break;
                         case 2:
                             SellerInterface sellerInterface = new SellerInterface();
+                            sellerInterface.Load(logins.getID());
                             loginPage.dispose();
                             sellerInterface.show();
                             
