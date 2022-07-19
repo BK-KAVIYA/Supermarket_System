@@ -11,6 +11,6 @@ import java.util.List;
 public interface CategoryDAO {
     public void Add(Category category);
     public void Update(Category category);
-    public void Serch(String CategoryID);
+    public Category Serch(String sellerID,String CategoryID);
     public List<Category> list(String ID);
 }

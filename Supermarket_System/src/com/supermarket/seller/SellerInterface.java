@@ -9,6 +9,7 @@ import com.supermarket.common.Category;
 import com.supermarket.common.CategoryImp;
 import com.supermarket.system.Login;
 import java.util.List;
+import javax.swing.JOptionPane;
 import javax.swing.table.DefaultTableModel;
 
 /**
@@ -17,9 +18,16 @@ import javax.swing.table.DefaultTableModel;
  */
 public class SellerInterface extends javax.swing.JFrame {
 
-    /**
-     * Creates new form SellerInterface
-     */
+   private String userID;
+
+    public String getUserID() {
+        return userID;
+    }
+
+    public void setUserID(String userID) {
+        this.userID = userID;
+    }
+   
     public SellerInterface() {
         
         initComponents();
@@ -102,10 +110,20 @@ public class SellerInterface extends javax.swing.JFrame {
         jButton3.setBackground(new java.awt.Color(255, 0, 102));
         jButton3.setFont(new java.awt.Font("Tahoma", 1, 11)); // NOI18N
         jButton3.setText("Add");
+        jButton3.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton3ActionPerformed(evt);
+            }
+        });
 
         jButton4.setBackground(new java.awt.Color(255, 0, 102));
         jButton4.setFont(new java.awt.Font("Tahoma", 1, 11)); // NOI18N
         jButton4.setText("Update");
+        jButton4.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton4ActionPerformed(evt);
+            }
+        });
 
         jButton5.setBackground(new java.awt.Color(255, 0, 102));
         jButton5.setFont(new java.awt.Font("Tahoma", 1, 11)); // NOI18N
@@ -196,11 +214,11 @@ public class SellerInterface extends javax.swing.JFrame {
             jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel3Layout.createSequentialGroup()
                 .addContainerGap()
-                .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jLabel7, javax.swing.GroupLayout.PREFERRED_SIZE, 41, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
                         .addComponent(jLabel13)
-                        .addComponent(jLabel12)))
+                        .addComponent(jLabel12))
+                    .addComponent(jLabel7, javax.swing.GroupLayout.PREFERRED_SIZE, 41, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGap(76, 76, 76)
                 .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel9)
@@ -307,8 +325,54 @@ public class SellerInterface extends javax.swing.JFrame {
     }//GEN-LAST:event_CNameActionPerformed
 
     private void jButton7ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton7ActionPerformed
-        // TODO add your handling code here:
+        String CategoryID=(JOptionPane.showInputDialog("Enter the category iD"));
+        
+        CategoryImp categoryImp = new CategoryImp();
+        Category category = new Category();
+        
+        category=categoryImp.Serch(getUserID(),CategoryID);
+        CID.setText(category.getCategoryID());
+        CName.setText(category.getCategoryName());
+        
+        
     }//GEN-LAST:event_jButton7ActionPerformed
+
+    private void jButton3ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton3ActionPerformed
+        Category category = new Category();
+        if(!CName.equals("")&&!CID.equals("")){
+                category.setCategoryID(CID.getText());
+                category.setCategoryName(CName.getText());
+                category.setProductSellerID(getUserID());
+                
+                CategoryImp categoryImp = new CategoryImp();
+                categoryImp.Add(category);
+                Load(getUserID());
+                
+                CID.setText("");
+                CName.setText("");
+        }else{
+            JOptionPane.showMessageDialog(null, "Please Fill theall the fields!!");
+        }
+ 
+    }//GEN-LAST:event_jButton3ActionPerformed
+
+    private void jButton4ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton4ActionPerformed
+        Category category = new Category();
+        if(!CName.equals("")&&!CID.equals("")){
+                category.setCategoryID(CID.getText());
+                category.setCategoryName(CName.getText());
+                category.setProductSellerID(getUserID());
+                
+                CategoryImp categoryImp = new CategoryImp();
+                categoryImp.Update(category);
+                Load(getUserID());
+                
+                CID.setText("");
+                CName.setText("");
+        }else{
+            JOptionPane.showMessageDialog(null, "Please Fill theall the fields!!");
+        }
+    }//GEN-LAST:event_jButton4ActionPerformed
 
     /**
      * @param args the command line arguments

@@ -1,6 +1,7 @@
 
 package com.supermarket.common;
 
+import com.supermarket.seller.SellerInterface;
 import com.supermarket.system.DBConnector;
 import com.supermarket.system.Login;
 import java.sql.Connection;
@@ -11,6 +12,7 @@ import java.util.ArrayList;
 import java.util.List;
 import java.util.logging.Level;
 import java.util.logging.Logger;
+import javax.swing.JOptionPane;
 
 /**
  *
@@ -24,12 +26,37 @@ public class CategoryImp implements CategoryDAO{
     
     @Override
     public void Add(Category category) {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+       String sql="Insert into productcategory Values(?,?,?);";
+        try {
+            pst=conn.prepareStatement(sql);
+            pst.setString(1,category.getCategoryID());
+            pst.setString(2,category.getCategoryName());
+            pst.setString(3,category.getProductSellerID());
+            pst.executeUpdate();
+            JOptionPane.showMessageDialog(null,"Data recode is added!!");
+        } catch (SQLException ex) {
+            JOptionPane.showMessageDialog(null,"Data Insertion Error!!");
+            Logger.getLogger(CategoryImp.class.getName()).log(Level.SEVERE, null, ex);
+        }
+       
+       
+       
     }
 
     @Override
     public void Update(Category category) {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+       String sql="update productcategory set categoryID=?, CategoryName=? where ProductSellerID=?;";
+        try {
+            pst=conn.prepareStatement(sql);
+            pst.setString(1,category.getCategoryID());
+            pst.setString(2,category.getCategoryName());
+            pst.setString(3,category.getCategoryID());
+            pst.executeUpdate();
+            JOptionPane.showMessageDialog(null,"Data recode is updated!!");
+        } catch (SQLException ex) {
+            JOptionPane.showMessageDialog(null,"Data updation Error!!");
+            Logger.getLogger(CategoryImp.class.getName()).log(Level.SEVERE, null, ex);
+        }
     }
 
     public void Delete(Category category) {
@@ -37,8 +64,28 @@ public class CategoryImp implements CategoryDAO{
     }
 
     @Override
-    public void Serch(String CategoryID) {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+    public Category Serch(String sellerID,String CategoryID) {
+        Category category = new Category();
+        String sql="select * from productcategory where CategoryID=? and ProductSellerID=?;";
+        try {
+            pst=conn.prepareStatement(sql);
+            pst.setString(1,category.getCategoryID());
+            pst.setString(2,sellerID);
+            ResultSet rs=pst.executeQuery();
+            while(rs.next()){
+                category.setCategoryID(rs.getString("CategoryID"));
+                category.setCategoryName(rs.getString("CategoryName"));
+                category.setProductSellerID(rs.getString("ProductSellerID"));
+            
+            }
+            
+            
+            
+        } catch (SQLException ex) {
+            Logger.getLogger(CategoryImp.class.getName()).log(Level.SEVERE, null, ex);
+        }
+        
+        return category;
     }
 
     @Override
