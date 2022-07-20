@@ -45,7 +45,7 @@ public class CategoryImp implements CategoryDAO{
 
     @Override
     public void Update(Category category) {
-       String sql="update productcategory set categoryID=?, CategoryName=? where ProductSellerID=?;";
+       String sql="update productcategory set categoryID=?, CategoryName=? where categoryID=?;";
         try {
             pst=conn.prepareStatement(sql);
             pst.setString(1,category.getCategoryID());
@@ -60,7 +60,17 @@ public class CategoryImp implements CategoryDAO{
     }
 
     public void Delete(Category category) {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+        try {
+            String sql="Delete from productcategory where categoryID=?;";
+            pst=conn.prepareStatement(sql);
+            pst.setString(1,category.getCategoryID());
+            pst.executeUpdate();
+            
+            JOptionPane.showMessageDialog(null, "Recode Deleted!!");
+        } catch (SQLException ex) {
+            JOptionPane.showMessageDialog(null, "Recode Deletion Error!!");
+            Logger.getLogger(CategoryImp.class.getName()).log(Level.SEVERE, null, ex);
+        }
     }
 
     @Override
@@ -69,7 +79,7 @@ public class CategoryImp implements CategoryDAO{
         String sql="select * from productcategory where CategoryID=? and ProductSellerID=?;";
         try {
             pst=conn.prepareStatement(sql);
-            pst.setString(1,category.getCategoryID());
+            pst.setString(1,CategoryID);
             pst.setString(2,sellerID);
             ResultSet rs=pst.executeQuery();
             while(rs.next()){
@@ -79,8 +89,7 @@ public class CategoryImp implements CategoryDAO{
             
             }
             
-            
-            
+     
         } catch (SQLException ex) {
             Logger.getLogger(CategoryImp.class.getName()).log(Level.SEVERE, null, ex);
         }
