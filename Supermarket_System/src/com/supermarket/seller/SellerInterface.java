@@ -366,6 +366,11 @@ public class SellerInterface extends javax.swing.JFrame {
         jButton12.setBackground(new java.awt.Color(255, 0, 102));
         jButton12.setFont(new java.awt.Font("Tahoma", 1, 11)); // NOI18N
         jButton12.setText("Serch");
+        jButton12.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                jButton12MouseClicked(evt);
+            }
+        });
         jButton12.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 jButton12ActionPerformed(evt);
@@ -590,6 +595,22 @@ public class SellerInterface extends javax.swing.JFrame {
     private void jButton12ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton12ActionPerformed
         // TODO add your handling code here:
     }//GEN-LAST:event_jButton12ActionPerformed
+
+    private void jButton12MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jButton12MouseClicked
+        String ProductID=(JOptionPane.showInputDialog("Enter the category ID"));
+        
+        ProductImp productImp = new ProductImp();
+        Product product = new Product();
+        
+        product=productImp.Serch(ProductID);
+        PID.setText(product.getProductID());
+        PName.setText(product.getProductName());
+        Quantity.setText(String.valueOf(product.getProductName()));
+        System.out.println(product.getProductCategoryID());
+        PCategory.setSelectedItem(product.getProductCategoryID());
+        
+        
+    }//GEN-LAST:event_jButton12MouseClicked
 
 
     public static void main(String args[]) {

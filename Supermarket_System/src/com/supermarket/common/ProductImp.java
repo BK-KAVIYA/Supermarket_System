@@ -49,7 +49,32 @@ public class ProductImp implements ProductDAO{
 
     @Override
     public Product Serch(String productID) {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+        Product product = new Product();
+        String sql="select * from product where ProductID=?;";
+        try {
+            pst=conn.prepareStatement(sql);
+            pst.setString(1,productID);
+            ResultSet rs=pst.executeQuery();
+            while(rs.next()){
+                product.setProductID(rs.getString("ProductID"));
+                product.setProductName(rs.getString("ProductName"));
+                product.setQuantity(rs.getInt("Quantity"));
+                 String sql1="select * from productcategory where CategoryID=?";
+                pst1=conn.prepareStatement(sql1);
+                pst1.setString(1,rs.getString("ProductCategoryID") );
+                ResultSet rs1=pst1.executeQuery();
+                while(rs1.next()){
+                    product.setProductCategoryID(rs1.getString("CategoryName"));
+                }
+                
+            }
+            
+     
+        } catch (SQLException ex) {
+            Logger.getLogger(CategoryImp.class.getName()).log(Level.SEVERE, null, ex);
+        }
+        
+        return product;
     }
 
 
