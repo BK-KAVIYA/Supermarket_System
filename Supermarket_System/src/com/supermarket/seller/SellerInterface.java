@@ -7,6 +7,7 @@ package com.supermarket.seller;
 
 import com.supermarket.common.Category;
 import com.supermarket.common.CategoryImp;
+import com.supermarket.common.Product;
 import com.supermarket.common.ProductImp;
 import java.awt.CardLayout;
 import java.util.List;
@@ -50,16 +51,25 @@ public class SellerInterface extends javax.swing.JFrame {
             DFT.addRow(new Object[]{PID,PName});
         }
         
-        ProductImp productImp = new ProductImp();
-        List<Category> productlist=productImp.Plist();
+       ProductImp pImp = new ProductImp();
+        List<Category> productlist=pImp.Plist();
         for(Category cat:productlist){
             PCategory.addItem(cat.getCategoryName());
         
         }
         
+        ProductImp productImp = new ProductImp();
+        List<Product> list1=productImp.list();
+        DefaultTableModel PDFT=(DefaultTableModel) PTable.getModel();
+        PDFT.setRowCount(0);
+        for(Product pt:list1){
+            PDFT.addRow(new Object[]{pt.getProductID(),pt.getProductName(),pt.getQuantity(),pt.getProductCategoryID()});
+        }
+        
         
     
     }
+    
     
     @SuppressWarnings("unchecked")
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
@@ -98,21 +108,21 @@ public class SellerInterface extends javax.swing.JFrame {
         jLabel16 = new javax.swing.JLabel();
         jLabel17 = new javax.swing.JLabel();
         jLabel18 = new javax.swing.JLabel();
-        CID1 = new javax.swing.JTextField();
+        PID = new javax.swing.JTextField();
         jLabel19 = new javax.swing.JLabel();
-        CName1 = new javax.swing.JTextField();
+        PName = new javax.swing.JTextField();
         jButton8 = new javax.swing.JButton();
         jButton9 = new javax.swing.JButton();
         jButton10 = new javax.swing.JButton();
         jButton11 = new javax.swing.JButton();
         jLabel20 = new javax.swing.JLabel();
-        CName2 = new javax.swing.JTextField();
+        Quantity = new javax.swing.JTextField();
         jLabel21 = new javax.swing.JLabel();
         PCategory = new javax.swing.JComboBox();
         jLabel22 = new javax.swing.JLabel();
         jButton12 = new javax.swing.JButton();
         jScrollPane2 = new javax.swing.JScrollPane();
-        CTable1 = new javax.swing.JTable();
+        PTable = new javax.swing.JTable();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setMaximumSize(new java.awt.Dimension(979, 700));
@@ -303,9 +313,9 @@ public class SellerInterface extends javax.swing.JFrame {
         jLabel19.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
         jLabel19.setText("Product Name");
 
-        CName1.addActionListener(new java.awt.event.ActionListener() {
+        PName.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                CName1ActionPerformed(evt);
+                PNameActionPerformed(evt);
             }
         });
 
@@ -338,9 +348,9 @@ public class SellerInterface extends javax.swing.JFrame {
         jLabel20.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
         jLabel20.setText("Quantity");
 
-        CName2.addActionListener(new java.awt.event.ActionListener() {
+        Quantity.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                CName2ActionPerformed(evt);
+                QuantityActionPerformed(evt);
             }
         });
 
@@ -362,7 +372,7 @@ public class SellerInterface extends javax.swing.JFrame {
             }
         });
 
-        CTable1.setModel(new javax.swing.table.DefaultTableModel(
+        PTable.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
                 {null, null, null, null},
                 {null, null, null, null},
@@ -373,7 +383,7 @@ public class SellerInterface extends javax.swing.JFrame {
                 "Product ID", "Product Name", "Quantity", "Product Category"
             }
         ));
-        jScrollPane2.setViewportView(CTable1);
+        jScrollPane2.setViewportView(PTable);
 
         javax.swing.GroupLayout jPanel4Layout = new javax.swing.GroupLayout(jPanel4);
         jPanel4.setLayout(jPanel4Layout);
@@ -387,7 +397,7 @@ public class SellerInterface extends javax.swing.JFrame {
                             .addGroup(jPanel4Layout.createSequentialGroup()
                                 .addComponent(jLabel18)
                                 .addGap(55, 55, 55)
-                                .addComponent(CID1, javax.swing.GroupLayout.PREFERRED_SIZE, 250, javax.swing.GroupLayout.PREFERRED_SIZE))
+                                .addComponent(PID, javax.swing.GroupLayout.PREFERRED_SIZE, 250, javax.swing.GroupLayout.PREFERRED_SIZE))
                             .addGroup(jPanel4Layout.createSequentialGroup()
                                 .addComponent(jButton8)
                                 .addGap(45, 45, 45)
@@ -404,11 +414,11 @@ public class SellerInterface extends javax.swing.JFrame {
                                 .addGroup(javax.swing.GroupLayout.Alignment.LEADING, jPanel4Layout.createSequentialGroup()
                                     .addComponent(jLabel20)
                                     .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                                    .addComponent(CName2, javax.swing.GroupLayout.PREFERRED_SIZE, 250, javax.swing.GroupLayout.PREFERRED_SIZE))
+                                    .addComponent(Quantity, javax.swing.GroupLayout.PREFERRED_SIZE, 250, javax.swing.GroupLayout.PREFERRED_SIZE))
                                 .addGroup(javax.swing.GroupLayout.Alignment.LEADING, jPanel4Layout.createSequentialGroup()
                                     .addComponent(jLabel19)
                                     .addGap(34, 34, 34)
-                                    .addComponent(CName1, javax.swing.GroupLayout.PREFERRED_SIZE, 250, javax.swing.GroupLayout.PREFERRED_SIZE)))))
+                                    .addComponent(PName, javax.swing.GroupLayout.PREFERRED_SIZE, 250, javax.swing.GroupLayout.PREFERRED_SIZE)))))
                     .addGroup(jPanel4Layout.createSequentialGroup()
                         .addGap(43, 43, 43)
                         .addGroup(jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -445,14 +455,14 @@ public class SellerInterface extends javax.swing.JFrame {
                     .addGroup(jPanel4Layout.createSequentialGroup()
                         .addGap(10, 10, 10)
                         .addComponent(jLabel18))
-                    .addComponent(CID1, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(PID, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGap(18, 18, 18)
                 .addGroup(jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(CName1, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(PName, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(jLabel19))
                 .addGap(18, 18, 18)
                 .addGroup(jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(CName2, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(Quantity, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(jLabel20))
                 .addGap(18, 18, 18)
                 .addGroup(jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -544,21 +554,38 @@ public class SellerInterface extends javax.swing.JFrame {
        cardLayout1.show(SellerPnnel,"card2");
     }//GEN-LAST:event_jButton2MouseClicked
 
-    private void CName1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_CName1ActionPerformed
+    private void PNameActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_PNameActionPerformed
         // TODO add your handling code here:
-    }//GEN-LAST:event_CName1ActionPerformed
+    }//GEN-LAST:event_PNameActionPerformed
 
     private void jButton8ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton8ActionPerformed
-        // TODO add your handling code here:
+        Product product = new Product();
+        if(!(PName.getText().equals("")&&PID.getText().equals("")&&Quantity.equals(""))){
+                product.setProductID(PID.getText());
+                product.setProductName(PName.getText());
+                product.setQuantity(Integer.parseInt(Quantity.getText()));
+                product.setProductCategoryID((String) PCategory.getSelectedItem());
+                
+                ProductImp productImp = new ProductImp();
+                productImp.Add(product);
+                Load(getUserID());
+                
+                PID.setText("");
+                PName.setText("");
+                Quantity.setText("");
+                
+        }else{
+            JOptionPane.showMessageDialog(null, "Please Fill theall the fields!!");
+        }
     }//GEN-LAST:event_jButton8ActionPerformed
 
     private void jButton9ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton9ActionPerformed
         // TODO add your handling code here:
     }//GEN-LAST:event_jButton9ActionPerformed
 
-    private void CName2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_CName2ActionPerformed
+    private void QuantityActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_QuantityActionPerformed
         // TODO add your handling code here:
-    }//GEN-LAST:event_CName2ActionPerformed
+    }//GEN-LAST:event_QuantityActionPerformed
 
     private void jButton12ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton12ActionPerformed
         // TODO add your handling code here:
@@ -599,13 +626,13 @@ public class SellerInterface extends javax.swing.JFrame {
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JTextField CID;
-    private javax.swing.JTextField CID1;
     private javax.swing.JTextField CName;
-    private javax.swing.JTextField CName1;
-    private javax.swing.JTextField CName2;
     private javax.swing.JTable CTable;
-    private javax.swing.JTable CTable1;
     private javax.swing.JComboBox PCategory;
+    private javax.swing.JTextField PID;
+    private javax.swing.JTextField PName;
+    private javax.swing.JTable PTable;
+    private javax.swing.JTextField Quantity;
     private javax.swing.JPanel SellerPnnel;
     private javax.swing.JButton jButton1;
     private javax.swing.JButton jButton10;

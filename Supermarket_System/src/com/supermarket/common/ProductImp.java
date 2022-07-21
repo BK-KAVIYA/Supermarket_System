@@ -9,16 +9,37 @@ import java.util.ArrayList;
 import java.util.List;
 import java.util.logging.Level;
 import java.util.logging.Logger;
+import javax.swing.JOptionPane;
 
 public class ProductImp implements ProductDAO{
     
     PreparedStatement pst;
+    PreparedStatement pst1;
     DBConnector obj=DBConnector.getObject();
     java.sql.Connection conn=obj.getConnection();
     
     @Override
     public void Add(Product product) {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+        String CategoryID=null;
+        String sql="Insert into product Values(?,?,?,?);";
+        try {
+            pst=conn.prepareStatement(sql);
+            pst.setString(1,product.getProductID());
+            pst.setString(2,product.getProductName());
+            pst.setInt(3,product.getQuantity());
+            String sql1="Select * from productcategory where CategoryName='"+product.getProductCategoryID()+"'";
+            pst1=conn.prepareStatement(sql1);
+            ResultSet rs=pst1.executeQuery();
+            while(rs.next()){
+                CategoryID=rs.getString("CategoryID");
+            }
+            pst.setString(4,CategoryID);
+            pst.executeUpdate();
+            JOptionPane.showMessageDialog(null,"Data recode is added!!");
+        } catch (SQLException ex) {
+            JOptionPane.showMessageDialog(null,"Data Insertion Error!!");
+            Logger.getLogger(CategoryImp.class.getName()).log(Level.SEVERE, null, ex);
+        }
     }
 
     @Override
@@ -33,8 +54,31 @@ public class ProductImp implements ProductDAO{
 
 
     @Override
-    public List<Product> list(String ID) {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+    public List<Product> list() {
+        List<Product> list =new ArrayList<Product>();
+        try {
+            
+            String sql="Select * from product;";
+            pst=conn.prepareStatement(sql);
+            ResultSet rs=pst.executeQuery();
+            
+            while(rs.next()){
+                Product product = new Product();
+                product.setProductID(rs.getString("ProductID"));
+                product.setProductName(rs.getString("ProductName"));
+                product.setQuantity(rs.getInt("Quantity"));
+                product.setProductCategoryID(rs.getString("ProductCategoryID"));
+                
+                list.add(product);
+            
+            }
+            
+           
+        } catch (SQLException ex) {
+            Logger.getLogger(CategoryImp.class.getName()).log(Level.SEVERE, null, ex);
+        }
+        
+         return list;
     }
 
     @Override
