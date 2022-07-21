@@ -1,7 +1,6 @@
 
 package com.supermarket.common;
 
-import com.supermarket.system.Login;
 import java.util.List;
 
 /**

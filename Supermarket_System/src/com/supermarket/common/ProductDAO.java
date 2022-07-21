@@ -1,14 +1,13 @@
-/*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
- */
+
 package com.supermarket.common;
 
-/**
- *
- * @author KA VI YA
- */
+import java.util.List;
+
+
 public interface ProductDAO {
-    
+    public void Add(Product product);
+    public void Update(Product product);
+    public Product Serch(String productID);
+    public List<Product> list(String ID);
+    public List<Category> Plist();
 }
