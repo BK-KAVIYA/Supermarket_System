@@ -157,7 +157,7 @@ public class SellerInterface extends javax.swing.JFrame {
         jButton1.setBackground(new java.awt.Color(204, 0, 51));
         jButton1.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
         jButton1.setForeground(new java.awt.Color(255, 255, 255));
-        jButton1.setText("Add Product");
+        jButton1.setText("Add Category");
         jButton1.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
                 jButton1MouseClicked(evt);
@@ -168,7 +168,7 @@ public class SellerInterface extends javax.swing.JFrame {
         jButton2.setBackground(new java.awt.Color(204, 0, 51));
         jButton2.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
         jButton2.setForeground(new java.awt.Color(255, 255, 255));
-        jButton2.setText("Add category");
+        jButton2.setText("Add Product");
         jButton2.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
                 jButton2MouseClicked(evt);
@@ -245,11 +245,21 @@ public class SellerInterface extends javax.swing.JFrame {
         jButton5.setBackground(new java.awt.Color(255, 0, 102));
         jButton5.setFont(new java.awt.Font("Tahoma", 1, 11)); // NOI18N
         jButton5.setText("Delete");
+        jButton5.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton5ActionPerformed(evt);
+            }
+        });
         jPanel3.add(jButton5, new org.netbeans.lib.awtextra.AbsoluteConstraints(270, 280, -1, -1));
 
         jButton6.setBackground(new java.awt.Color(255, 0, 102));
         jButton6.setFont(new java.awt.Font("Tahoma", 1, 11)); // NOI18N
         jButton6.setText("Clear");
+        jButton6.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton6ActionPerformed(evt);
+            }
+        });
         jPanel3.add(jButton6, new org.netbeans.lib.awtextra.AbsoluteConstraints(380, 280, -1, -1));
 
         jLabel11.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
@@ -331,6 +341,11 @@ public class SellerInterface extends javax.swing.JFrame {
         jButton9.setBackground(new java.awt.Color(255, 0, 102));
         jButton9.setFont(new java.awt.Font("Tahoma", 1, 11)); // NOI18N
         jButton9.setText("Update");
+        jButton9.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                jButton9MouseClicked(evt);
+            }
+        });
         jButton9.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 jButton9ActionPerformed(evt);
@@ -605,12 +620,54 @@ public class SellerInterface extends javax.swing.JFrame {
         product=productImp.Serch(ProductID);
         PID.setText(product.getProductID());
         PName.setText(product.getProductName());
-        Quantity.setText(String.valueOf(product.getProductName()));
-        System.out.println(product.getProductCategoryID());
+        Quantity.setText(String.valueOf(product.getQuantity()));
         PCategory.setSelectedItem(product.getProductCategoryID());
         
         
     }//GEN-LAST:event_jButton12MouseClicked
+
+    private void jButton9MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jButton9MouseClicked
+       Product product = new Product();
+        if(!(PName.getText().equals("")&&PID.getText().equals("")&&Quantity.equals(""))){
+                product.setProductID(PID.getText());
+                product.setProductName(PName.getText());
+                product.setQuantity(Integer.parseInt(Quantity.getText()));
+                product.setProductCategoryID((String) PCategory.getSelectedItem());
+                
+                ProductImp productImp = new ProductImp();
+                productImp.Update(product);
+                Load(getUserID());
+                
+                PID.setText("");
+                PName.setText("");
+                Quantity.setText("");
+                PCategory.setSelectedIndex(0);
+                
+        }else{
+            JOptionPane.showMessageDialog(null, "Please Fill theall the fields!!");
+        }
+    }//GEN-LAST:event_jButton9MouseClicked
+
+    private void jButton5ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton5ActionPerformed
+         Category category = new Category();
+        if(!(CName.getText().equals("")&&CID.getText().equals(""))){
+                category.setCategoryID(CID.getText());
+                
+                CategoryImp categoryImp = new CategoryImp();
+                categoryImp.Delete(category);
+                Load(getUserID());
+                
+                CID.setText("");
+                CName.setText("");
+        }else{
+            JOptionPane.showMessageDialog(null, "Please Fill theall the fields!!");
+        }
+    }//GEN-LAST:event_jButton5ActionPerformed
+
+    private void jButton6ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton6ActionPerformed
+       CID.setText("");
+       CName.setText("");
+    }//GEN-LAST:event_jButton6ActionPerformed
 
 
     public static void main(String args[]) {

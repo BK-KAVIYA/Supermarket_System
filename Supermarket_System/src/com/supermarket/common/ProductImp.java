@@ -44,7 +44,33 @@ public class ProductImp implements ProductDAO{
 
     @Override
     public void Update(Product product) {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+        String CategoryID=null;
+        try {
+            
+            String sql1="Select * from productcategory where CategoryName='"+product.getProductCategoryID()+"'";
+            pst1=conn.prepareStatement(sql1);
+            ResultSet rs=pst1.executeQuery();
+            while(rs.next()){
+                CategoryID=rs.getString("CategoryID");
+            }
+            
+            try {
+                String sql="Update product set ProductID=?,ProductName=?,Quantity=?,ProductCategoryID=? where ProductID=?;";
+                pst=conn.prepareStatement(sql);
+                pst.setString(1,product.getProductID());
+                pst.setString(2,product.getProductName());
+                pst.setInt(3,product.getQuantity());
+                pst.setString(4,CategoryID);
+                pst.setString(5,product.getProductID());
+                pst.executeUpdate();
+                JOptionPane.showMessageDialog(null,"Data recode is added!!");
+            } catch (SQLException ex) {
+                JOptionPane.showMessageDialog(null,"Data Insertion Error!!");
+                Logger.getLogger(CategoryImp.class.getName()).log(Level.SEVERE, null, ex);
+            }
+        } catch (SQLException ex) {
+            Logger.getLogger(ProductImp.class.getName()).log(Level.SEVERE,null, ex);
+        }
     }
 
     @Override

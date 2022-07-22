@@ -10,6 +10,7 @@ import java.util.List;
 public interface CategoryDAO {
     public void Add(Category category);
     public void Update(Category category);
+    public void Delete(String ProductID);
     public Category Serch(String sellerID,String CategoryID);
     public List<Category> list(String ID);
 }

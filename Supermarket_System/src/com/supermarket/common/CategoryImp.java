@@ -1,9 +1,7 @@
 
 package com.supermarket.common;
 
-import com.supermarket.seller.SellerInterface;
 import com.supermarket.system.DBConnector;
-import com.supermarket.system.Login;
 import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
@@ -122,6 +120,11 @@ public class CategoryImp implements CategoryDAO{
         }
         
          return list;
+    }
+
+    @Override
+    public void Delete(String ProductID) {
+        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
     }
     
 }
