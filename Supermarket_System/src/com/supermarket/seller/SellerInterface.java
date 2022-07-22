@@ -293,9 +293,19 @@ public class SellerInterface extends javax.swing.JFrame {
         jPanel3.add(jButton7, new org.netbeans.lib.awtextra.AbsoluteConstraints(370, 410, -1, -1));
 
         jLabel12.setIcon(new javax.swing.ImageIcon(getClass().getResource("/photos/close.png"))); // NOI18N
+        jLabel12.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                jLabel12MouseClicked(evt);
+            }
+        });
         jPanel3.add(jLabel12, new org.netbeans.lib.awtextra.AbsoluteConstraints(600, 10, 20, -1));
 
         jLabel13.setIcon(new javax.swing.ImageIcon(getClass().getResource("/photos/minimize.png"))); // NOI18N
+        jLabel13.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                jLabel13MouseClicked(evt);
+            }
+        });
         jPanel3.add(jLabel13, new org.netbeans.lib.awtextra.AbsoluteConstraints(570, 10, 30, -1));
 
         SellerPnnel.add(jPanel3, "card1");
@@ -355,10 +365,20 @@ public class SellerInterface extends javax.swing.JFrame {
         jButton10.setBackground(new java.awt.Color(255, 0, 102));
         jButton10.setFont(new java.awt.Font("Tahoma", 1, 11)); // NOI18N
         jButton10.setText("Delete");
+        jButton10.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton10ActionPerformed(evt);
+            }
+        });
 
         jButton11.setBackground(new java.awt.Color(255, 0, 102));
         jButton11.setFont(new java.awt.Font("Tahoma", 1, 11)); // NOI18N
         jButton11.setText("Clear");
+        jButton11.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton11ActionPerformed(evt);
+            }
+        });
 
         jLabel20.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
         jLabel20.setText("Quantity");
@@ -650,7 +670,7 @@ public class SellerInterface extends javax.swing.JFrame {
 
     private void jButton5ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton5ActionPerformed
          Category category = new Category();
-        if(!(CName.getText().equals("")&&CID.getText().equals(""))){
+         if(!(CName.getText().equals("")&&CID.getText().equals(""))){
                 category.setCategoryID(CID.getText());
                 
                 CategoryImp categoryImp = new CategoryImp();
@@ -668,6 +688,39 @@ public class SellerInterface extends javax.swing.JFrame {
        CID.setText("");
        CName.setText("");
     }//GEN-LAST:event_jButton6ActionPerformed
+
+    private void jButton10ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton10ActionPerformed
+        Product product = new Product();
+         if(!(PName.getText().equals("")&&PID.getText().equals("")&&Quantity.equals(""))){
+               product.setProductID(PID.getText());
+                
+                ProductImp productImp = new ProductImp();
+                productImp.Delete(product);
+                Load(getUserID());
+                
+                PID.setText("");
+                PName.setText("");
+                Quantity.setText("");
+                PCategory.setSelectedIndex(0);
+        }else{
+            JOptionPane.showMessageDialog(null, "Please Fill theall the fields!!");
+        }
+    }//GEN-LAST:event_jButton10ActionPerformed
+
+    private void jButton11ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton11ActionPerformed
+        PID.setText("");
+        PName.setText("");
+        Quantity.setText("");
+        PCategory.setSelectedIndex(0);
+    }//GEN-LAST:event_jButton11ActionPerformed
+
+    private void jLabel12MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jLabel12MouseClicked
+        this.dispose();
+    }//GEN-LAST:event_jLabel12MouseClicked
+
+    private void jLabel13MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jLabel13MouseClicked
+        this.setState(ICONIFIED);
+    }//GEN-LAST:event_jLabel13MouseClicked
 
 
     public static void main(String args[]) {

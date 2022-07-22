@@ -57,6 +57,7 @@ public class CategoryImp implements CategoryDAO{
         }
     }
 
+    @Override
     public void Delete(Category category) {
         try {
             String sql="Delete from productcategory where categoryID=?;";
@@ -122,9 +123,6 @@ public class CategoryImp implements CategoryDAO{
          return list;
     }
 
-    @Override
-    public void Delete(String ProductID) {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
-    }
+
     
 }

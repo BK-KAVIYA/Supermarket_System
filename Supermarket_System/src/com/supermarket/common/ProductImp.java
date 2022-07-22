@@ -158,5 +158,20 @@ public class ProductImp implements ProductDAO{
         
          return list;
     }
+
+    @Override
+    public void Delete(Product product) {
+        try {
+            String sql="Delete from product where ProductID=?;";
+            pst=conn.prepareStatement(sql);
+            pst.setString(1,product.getProductID());
+            pst.executeUpdate();
+            
+            JOptionPane.showMessageDialog(null, "Recode Deleted!!");
+        } catch (SQLException ex) {
+            JOptionPane.showMessageDialog(null, "Recode Deletion Error!!");
+            Logger.getLogger(CategoryImp.class.getName()).log(Level.SEVERE, null, ex);
+        }
+    }
     
 }
