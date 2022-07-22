@@ -1,6 +1,7 @@
 
 package com.supermarket.system;
 
+import com.supermarket.admin.AdminInterface;
 import com.supermarket.seller.SellerInterface;
 import java.sql.Connection;
 import java.sql.PreparedStatement;
@@ -28,7 +29,10 @@ public class LoginImp implements LoginDAO{
                 if(rs.getString("Password").equals(logins.getPassword())){
                     switch(rs.getInt("UserRolle")){
                         case 1:
-                            
+                            AdminInterface adminInterface = new AdminInterface();
+                            adminInterface.setUserID(logins.getID());
+                            loginPage.dispose();
+                            adminInterface.show();
                             break;
                         case 2:
                             SellerInterface sellerInterface = new SellerInterface();
