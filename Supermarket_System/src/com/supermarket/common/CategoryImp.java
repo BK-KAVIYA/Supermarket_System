@@ -73,13 +73,12 @@ public class CategoryImp implements CategoryDAO{
     }
 
     @Override
-    public Category Serch(String sellerID,String CategoryID) {
+    public Category Serch(String CategoryID) {
         Category category = new Category();
-        String sql="select * from productcategory where CategoryID=? and ProductSellerID=?;";
+        String sql="select * from productcategory where CategoryID=?;";
         try {
             pst=conn.prepareStatement(sql);
             pst.setString(1,CategoryID);
-            pst.setString(2,sellerID);
             ResultSet rs=pst.executeQuery();
             while(rs.next()){
                 category.setCategoryID(rs.getString("CategoryID"));
@@ -102,6 +101,33 @@ public class CategoryImp implements CategoryDAO{
         try {
             
             String sql="Select * from productcategory where ProductSellerID='"+ID+"'";
+            pst=conn.prepareStatement(sql);
+            ResultSet rs=pst.executeQuery();
+            
+            while(rs.next()){
+                Category category = new Category();
+                category.setCategoryID(rs.getString("CategoryID"));
+                category.setCategoryName(rs.getString("CategoryName"));
+                category.setProductSellerID(rs.getString("ProductSellerID"));
+                
+                list.add(category);
+            
+            }
+            
+           
+        } catch (SQLException ex) {
+            Logger.getLogger(CategoryImp.class.getName()).log(Level.SEVERE, null, ex);
+        }
+        
+         return list;
+    }
+
+    @Override
+    public List<Category> Catlist() {
+       List<Category> list =new ArrayList<Category>();
+        try {
+            
+            String sql="Select * from productcategory";
             pst=conn.prepareStatement(sql);
             ResultSet rs=pst.executeQuery();
             

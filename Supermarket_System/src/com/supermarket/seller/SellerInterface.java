@@ -547,7 +547,7 @@ public class SellerInterface extends javax.swing.JFrame {
         CategoryImp categoryImp = new CategoryImp();
         Category category = new Category();
         
-        category=categoryImp.Serch(getUserID(),CategoryID);
+        category=categoryImp.Serch(CategoryID);
         CID.setText(category.getCategoryID());
         CName.setText(category.getCategoryName());
         
