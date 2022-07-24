@@ -3,10 +3,19 @@ package com.supermarket.admin;
 
 import com.supermarket.common.Category;
 import com.supermarket.common.CategoryImp;
+import com.supermarket.common.Product;
+import com.supermarket.common.ProductImp;
 import com.supermarket.common.Seller;
 import com.supermarket.common.SellerImp;
+import com.supermarket.system.DBConnector;
 import java.awt.CardLayout;
+import java.sql.PreparedStatement;
+import java.sql.ResultSet;
+import java.sql.SQLException;
 import java.util.List;
+import java.util.logging.Level;
+import java.util.logging.Logger;
+import javax.swing.JOptionPane;
 import javax.swing.table.DefaultTableModel;
 
 /**
@@ -14,6 +23,10 @@ import javax.swing.table.DefaultTableModel;
  * @author KA VI YA
  */
 public class AdminInterface extends javax.swing.JFrame {
+    
+    PreparedStatement pst1;
+    DBConnector obj=DBConnector.getObject();
+    java.sql.Connection conn=obj.getConnection();
     CardLayout cardLayout1;
     String UserID;
 
@@ -452,21 +465,33 @@ public class AdminInterface extends javax.swing.JFrame {
     }//GEN-LAST:event_CNameActionPerformed
 
     private void jButton4ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton4ActionPerformed
-       /* Category category = new Category();
-        if(!CName.equals("")&&!CID.equals("")){
-            category.setCategoryID(CID.getText());
-            category.setCategoryName(CName.getText());
-            category.setProductSellerID(getUserID());
-
-            CategoryImp categoryImp = new CategoryImp();
-            categoryImp.Add(category);
-            Load(getUserID());
-
-            CID.setText("");
-            CName.setText("");
+        Category category = new Category();
+        if(!(CID.getText().equals("")&&CName.getText().equals(""))){
+            try {
+                category.setCategoryID(CID.getText());
+                category.setCategoryName(CName.getText());
+                String Sellernm=(String) SellerName.getSelectedItem();
+                String sql1="Select * from seller where SellerName='"+Sellernm+"'";
+                pst1=conn.prepareStatement(sql1);
+                ResultSet rs=pst1.executeQuery();
+                while(rs.next()){
+                    category.setProductSellerID(rs.getString("SellerID"));
+                }
+                
+                CategoryImp categoryImp = new CategoryImp();
+                categoryImp.Add(category);
+                Load();
+                
+                CID.setText("");
+                CName.setText("");
+                SellerName.setSelectedIndex(0);
+            } catch (SQLException ex) {
+                Logger.getLogger(AdminInterface.class.getName()).log(Level.SEVERE, null, ex);
+            }
+                
         }else{
             JOptionPane.showMessageDialog(null, "Please Fill theall the fields!!");
-        }*/
+        }
 
     }//GEN-LAST:event_jButton4ActionPerformed
 
