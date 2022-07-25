@@ -18,7 +18,7 @@ import java.util.logging.Logger;
  *
  * @author KA VI YA
  */
-public class SellerImp implements SellerDAO{
+public class UserImp implements UserDAO{
     
     PreparedStatement pst;
     PreparedStatement pst1;
@@ -26,39 +26,39 @@ public class SellerImp implements SellerDAO{
     java.sql.Connection conn=obj.getConnection();
 
     @Override
-    public void Add(Seller seller) {
+    public void Add(User seller) {
         throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
     }
 
     @Override
-    public void Update(Seller seller) {
+    public void Update(User seller) {
         throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
     }
 
     @Override
-    public void Delete(Seller seller) {
+    public void Delete(User seller) {
         throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
     }
 
     @Override
-    public Product Serch(Seller seller) {
+    public Product Serch(User seller) {
         throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
     }
 
     @Override
-    public List<Seller> list() {
-        List<Seller> list =new ArrayList<Seller>();
+    public List<User> list(String tableName) {
+        List<User> list =new ArrayList<User>();
          try {
             
-            String sql="Select * from seller;";
+            String sql="Select * from "+tableName+";";
             pst=conn.prepareStatement(sql);
             ResultSet rs=pst.executeQuery();
             
             while(rs.next()){
-                Seller seller = new Seller();
-                seller.setSellerID(rs.getString("SellerID"));
-                seller.setSellerName(rs.getString("SellerName"));
-                seller.setSellerAddress(rs.getString("SellerAddress"));
+                User seller = new User();
+                seller.setSellerID(rs.getString(tableName+"ID"));
+                seller.setSellerName(rs.getString(tableName+"Name"));
+                seller.setSellerAddress(rs.getString(tableName+"Address"));
                 seller.setContacatNo(rs.getInt("ContactNumber"));
                 
                 list.add(seller);

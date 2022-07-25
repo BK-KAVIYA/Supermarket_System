@@ -5,7 +5,7 @@ package com.supermarket.common;
  *
  * @author KA VI YA
  */
-public class Seller {
+public class User {
     private String SellerID;
     private String SellerName;
     private String SellerAddress;
