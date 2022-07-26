@@ -66,29 +66,30 @@ public class AdminInterface extends javax.swing.JFrame {
         jLabel28 = new javax.swing.JLabel();
         jLabel29 = new javax.swing.JLabel();
         jLabel30 = new javax.swing.JLabel();
-        CID1 = new javax.swing.JTextField();
+        UID = new javax.swing.JTextField();
         jLabel31 = new javax.swing.JLabel();
-        CName1 = new javax.swing.JTextField();
+        UName = new javax.swing.JTextField();
         jLabel32 = new javax.swing.JLabel();
-        SellerName1 = new javax.swing.JComboBox();
+        UserType = new javax.swing.JComboBox();
         jButton14 = new javax.swing.JButton();
         jButton15 = new javax.swing.JButton();
         jButton16 = new javax.swing.JButton();
         jButton17 = new javax.swing.JButton();
         jLabel33 = new javax.swing.JLabel();
-        CName2 = new javax.swing.JTextField();
-        CName3 = new javax.swing.JTextField();
+        UAddress = new javax.swing.JTextField();
+        UContact = new javax.swing.JTextField();
         jLabel34 = new javax.swing.JLabel();
         jPanel6 = new javax.swing.JPanel();
         jLabel35 = new javax.swing.JLabel();
         jLabel36 = new javax.swing.JLabel();
         jLabel37 = new javax.swing.JLabel();
-        jPasswordField1 = new javax.swing.JPasswordField();
+        Password = new javax.swing.JPasswordField();
         jLabel38 = new javax.swing.JLabel();
-        jPasswordField2 = new javax.swing.JPasswordField();
+        CPassword = new javax.swing.JPasswordField();
         jScrollPane3 = new javax.swing.JScrollPane();
         UTable = new javax.swing.JTable();
         jLabel39 = new javax.swing.JLabel();
+        jButton18 = new javax.swing.JButton();
         jPanel4 = new javax.swing.JPanel();
         jLabel7 = new javax.swing.JLabel();
         jLabel9 = new javax.swing.JLabel();
@@ -236,19 +237,19 @@ public class AdminInterface extends javax.swing.JFrame {
         jLabel31.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
         jLabel31.setText("User Name");
 
-        CName1.addActionListener(new java.awt.event.ActionListener() {
+        UName.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                CName1ActionPerformed(evt);
+                UNameActionPerformed(evt);
             }
         });
 
         jLabel32.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
         jLabel32.setText("User Rolle");
 
-        SellerName1.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "Select the seller" }));
-        SellerName1.addActionListener(new java.awt.event.ActionListener() {
+        UserType.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "Select User Type" }));
+        UserType.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                SellerName1ActionPerformed(evt);
+                UserTypeActionPerformed(evt);
             }
         });
 
@@ -291,15 +292,15 @@ public class AdminInterface extends javax.swing.JFrame {
         jLabel33.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
         jLabel33.setText("Address");
 
-        CName2.addActionListener(new java.awt.event.ActionListener() {
+        UAddress.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                CName2ActionPerformed(evt);
+                UAddressActionPerformed(evt);
             }
         });
 
-        CName3.addActionListener(new java.awt.event.ActionListener() {
+        UContact.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                CName3ActionPerformed(evt);
+                UContactActionPerformed(evt);
             }
         });
 
@@ -317,12 +318,12 @@ public class AdminInterface extends javax.swing.JFrame {
         jLabel37.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
         jLabel37.setText("Password :");
 
-        jPasswordField1.setText("jPasswordField1");
+        Password.setText("jPass");
 
         jLabel38.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
         jLabel38.setText("Confirm Password :");
 
-        jPasswordField2.setText("jPasswordField1");
+        CPassword.setText("jPass");
 
         javax.swing.GroupLayout jPanel6Layout = new javax.swing.GroupLayout(jPanel6);
         jPanel6.setLayout(jPanel6Layout);
@@ -334,9 +335,9 @@ public class AdminInterface extends javax.swing.JFrame {
                     .addComponent(jLabel35, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                     .addComponent(jLabel36)
                     .addComponent(jLabel37)
-                    .addComponent(jPasswordField1)
+                    .addComponent(Password)
                     .addComponent(jLabel38)
-                    .addComponent(jPasswordField2))
+                    .addComponent(CPassword))
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
         jPanel6Layout.setVerticalGroup(
@@ -347,11 +348,11 @@ public class AdminInterface extends javax.swing.JFrame {
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(jLabel37)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                .addComponent(jPasswordField1, javax.swing.GroupLayout.PREFERRED_SIZE, 28, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addComponent(Password, javax.swing.GroupLayout.PREFERRED_SIZE, 28, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(jLabel38)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                .addComponent(jPasswordField2, javax.swing.GroupLayout.PREFERRED_SIZE, 28, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addComponent(CPassword, javax.swing.GroupLayout.PREFERRED_SIZE, 28, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 14, Short.MAX_VALUE)
                 .addComponent(jLabel35)
                 .addContainerGap())
@@ -370,6 +371,15 @@ public class AdminInterface extends javax.swing.JFrame {
         jLabel39.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
         jLabel39.setForeground(new java.awt.Color(255, 153, 0));
         jLabel39.setText("User List");
+
+        jButton18.setBackground(new java.awt.Color(255, 0, 102));
+        jButton18.setFont(new java.awt.Font("Tahoma", 1, 11)); // NOI18N
+        jButton18.setText("Serch");
+        jButton18.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton18ActionPerformed(evt);
+            }
+        });
 
         javax.swing.GroupLayout jPanel3Layout = new javax.swing.GroupLayout(jPanel3);
         jPanel3.setLayout(jPanel3Layout);
@@ -398,23 +408,23 @@ public class AdminInterface extends javax.swing.JFrame {
                                             .addGroup(jPanel3Layout.createSequentialGroup()
                                                 .addComponent(jLabel32)
                                                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                                                .addComponent(SellerName1, javax.swing.GroupLayout.PREFERRED_SIZE, 250, javax.swing.GroupLayout.PREFERRED_SIZE))
+                                                .addComponent(UserType, javax.swing.GroupLayout.PREFERRED_SIZE, 250, javax.swing.GroupLayout.PREFERRED_SIZE))
                                             .addGroup(javax.swing.GroupLayout.Alignment.LEADING, jPanel3Layout.createSequentialGroup()
                                                 .addComponent(jLabel31)
                                                 .addGap(34, 34, 34)
-                                                .addComponent(CName1))
+                                                .addComponent(UName))
                                             .addGroup(javax.swing.GroupLayout.Alignment.LEADING, jPanel3Layout.createSequentialGroup()
                                                 .addComponent(jLabel30)
                                                 .addGap(55, 55, 55)
-                                                .addComponent(CID1, javax.swing.GroupLayout.PREFERRED_SIZE, 250, javax.swing.GroupLayout.PREFERRED_SIZE))
+                                                .addComponent(UID, javax.swing.GroupLayout.PREFERRED_SIZE, 250, javax.swing.GroupLayout.PREFERRED_SIZE))
                                             .addGroup(javax.swing.GroupLayout.Alignment.LEADING, jPanel3Layout.createSequentialGroup()
                                                 .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                                                     .addComponent(jLabel34)
                                                     .addComponent(jLabel33))
-                                                .addGap(34, 34, 34)
+                                                .addGap(28, 28, 28)
                                                 .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                                    .addComponent(CName2)
-                                                    .addComponent(CName3))))
+                                                    .addComponent(UAddress)
+                                                    .addComponent(UContact))))
                                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 33, Short.MAX_VALUE)
                                         .addComponent(jPanel6, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                                     .addGroup(jPanel3Layout.createSequentialGroup()
@@ -432,6 +442,10 @@ public class AdminInterface extends javax.swing.JFrame {
                     .addComponent(jScrollPane3, javax.swing.GroupLayout.PREFERRED_SIZE, 553, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(jLabel39))
                 .addGap(0, 0, Short.MAX_VALUE))
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel3Layout.createSequentialGroup()
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addComponent(jButton18)
+                .addGap(184, 184, 184))
         );
         jPanel3Layout.setVerticalGroup(
             jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -448,26 +462,26 @@ public class AdminInterface extends javax.swing.JFrame {
                     .addGroup(jPanel3Layout.createSequentialGroup()
                         .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                             .addComponent(jLabel32)
-                            .addComponent(SellerName1, javax.swing.GroupLayout.PREFERRED_SIZE, 39, javax.swing.GroupLayout.PREFERRED_SIZE))
+                            .addComponent(UserType, javax.swing.GroupLayout.PREFERRED_SIZE, 39, javax.swing.GroupLayout.PREFERRED_SIZE))
                         .addGap(14, 14, 14)
                         .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addGroup(jPanel3Layout.createSequentialGroup()
                                 .addGap(10, 10, 10)
                                 .addComponent(jLabel30))
-                            .addComponent(CID1, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE))
+                            .addComponent(UID, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE))
                         .addGap(30, 30, 30)
                         .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addComponent(jLabel31)
-                            .addComponent(CName1, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE))
+                            .addComponent(UName, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE))
                         .addGap(18, 18, 18)
                         .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addComponent(jLabel33)
-                            .addComponent(CName2, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                            .addComponent(UAddress, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE)))
                     .addComponent(jPanel6, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGap(18, 18, 18)
                 .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addComponent(jLabel34)
-                    .addComponent(CName3, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(UContact, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGap(45, 45, 45)
                 .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
@@ -478,7 +492,9 @@ public class AdminInterface extends javax.swing.JFrame {
                         .addComponent(jButton15)))
                 .addGap(65, 65, 65)
                 .addComponent(jLabel39)
-                .addGap(36, 36, 36)
+                .addGap(2, 2, 2)
+                .addComponent(jButton18)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addComponent(jScrollPane3, javax.swing.GroupLayout.PREFERRED_SIZE, 114, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addContainerGap(100, Short.MAX_VALUE))
         );
@@ -622,46 +638,45 @@ public class AdminInterface extends javax.swing.JFrame {
                         .addGap(0, 0, 0)
                         .addComponent(jLabel12))
                     .addGroup(jPanel4Layout.createSequentialGroup()
-                        .addGroup(jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addGroup(jPanel4Layout.createSequentialGroup()
-                                .addGap(20, 20, 20)
-                                .addComponent(jLabel9))
-                            .addGroup(jPanel4Layout.createSequentialGroup()
-                                .addGap(40, 40, 40)
-                                .addComponent(jLabel8)
-                                .addGap(55, 55, 55)
-                                .addComponent(CID, javax.swing.GroupLayout.PREFERRED_SIZE, 250, javax.swing.GroupLayout.PREFERRED_SIZE))
-                            .addGroup(jPanel4Layout.createSequentialGroup()
-                                .addGap(30, 30, 30)
-                                .addComponent(jLabel11))
-                            .addGroup(jPanel4Layout.createSequentialGroup()
-                                .addGap(350, 350, 350)
-                                .addComponent(jButton8))
-                            .addGroup(jPanel4Layout.createSequentialGroup()
-                                .addGap(30, 30, 30)
-                                .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 528, javax.swing.GroupLayout.PREFERRED_SIZE))
-                            .addGroup(jPanel4Layout.createSequentialGroup()
-                                .addGap(39, 39, 39)
-                                .addGroup(jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                                    .addGroup(jPanel4Layout.createSequentialGroup()
-                                        .addComponent(jButton4)
-                                        .addGap(45, 45, 45)
-                                        .addComponent(jButton5)
-                                        .addGap(37, 37, 37)
-                                        .addComponent(jButton6)
-                                        .addGap(41, 41, 41)
-                                        .addComponent(jButton7))
-                                    .addGroup(jPanel4Layout.createSequentialGroup()
-                                        .addGroup(jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel4Layout.createSequentialGroup()
-                                                .addComponent(jLabel10)
-                                                .addGap(34, 34, 34))
-                                            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel4Layout.createSequentialGroup()
-                                                .addComponent(jLabel14)
-                                                .addGap(61, 61, 61)))
-                                        .addGroup(jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                                            .addComponent(CName)
-                                            .addComponent(SellerName, 0, 250, Short.MAX_VALUE))))))
+                        .addGroup(jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                            .addComponent(jButton8)
+                            .addGroup(jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                .addGroup(jPanel4Layout.createSequentialGroup()
+                                    .addGap(20, 20, 20)
+                                    .addComponent(jLabel9))
+                                .addGroup(jPanel4Layout.createSequentialGroup()
+                                    .addGap(40, 40, 40)
+                                    .addComponent(jLabel8)
+                                    .addGap(55, 55, 55)
+                                    .addComponent(CID, javax.swing.GroupLayout.PREFERRED_SIZE, 250, javax.swing.GroupLayout.PREFERRED_SIZE))
+                                .addGroup(jPanel4Layout.createSequentialGroup()
+                                    .addGap(30, 30, 30)
+                                    .addComponent(jLabel11))
+                                .addGroup(jPanel4Layout.createSequentialGroup()
+                                    .addGap(30, 30, 30)
+                                    .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 528, javax.swing.GroupLayout.PREFERRED_SIZE))
+                                .addGroup(jPanel4Layout.createSequentialGroup()
+                                    .addGap(39, 39, 39)
+                                    .addGroup(jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                                        .addGroup(jPanel4Layout.createSequentialGroup()
+                                            .addComponent(jButton4)
+                                            .addGap(45, 45, 45)
+                                            .addComponent(jButton5)
+                                            .addGap(37, 37, 37)
+                                            .addComponent(jButton6)
+                                            .addGap(41, 41, 41)
+                                            .addComponent(jButton7))
+                                        .addGroup(jPanel4Layout.createSequentialGroup()
+                                            .addGroup(jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                                .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel4Layout.createSequentialGroup()
+                                                    .addComponent(jLabel10)
+                                                    .addGap(34, 34, 34))
+                                                .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel4Layout.createSequentialGroup()
+                                                    .addComponent(jLabel14)
+                                                    .addGap(61, 61, 61)))
+                                            .addGroup(jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                                                .addComponent(CName)
+                                                .addComponent(SellerName, 0, 250, Short.MAX_VALUE)))))))
                         .addGap(0, 154, Short.MAX_VALUE)))
                 .addContainerGap())
         );
@@ -702,9 +717,9 @@ public class AdminInterface extends javax.swing.JFrame {
                     .addComponent(jButton7))
                 .addGap(18, 18, 18)
                 .addComponent(jLabel11)
-                .addGap(33, 33, 33)
+                .addGap(42, 42, 42)
                 .addComponent(jButton8)
-                .addGap(27, 27, 27)
+                .addGap(18, 18, 18)
                 .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 146, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addContainerGap(157, Short.MAX_VALUE))
         );
@@ -976,6 +991,7 @@ public class AdminInterface extends javax.swing.JFrame {
         }
         
         DefaultTableModel UFT=(DefaultTableModel) UTable.getModel();
+        UFT.setRowCount(0);
         UserImp sellerImp = new UserImp();
         List<User> adminlist=sellerImp.list("Admin");
         for(User adm:adminlist){
@@ -988,9 +1004,15 @@ public class AdminInterface extends javax.swing.JFrame {
            UFT.addRow(new Object[]{sel.getSellerID(),sel.getSellerName(),sel.getSellerAddress(),sel.getContacatNo()});
         }
         
-         List<User> Cashlist=sellerImp.list("Cashier");
+         List<User> Cashlist=sellerImp.list("Cheshire");
         for(User ch:Cashlist){
             UFT.addRow(new Object[]{ch.getSellerID(),ch.getSellerName(),ch.getSellerAddress(),ch.getContacatNo()});
+        }
+        
+        List<User> UserRolle=sellerImp.Userlist();
+        for(User usr:UserRolle){
+            UserType.addItem(usr.getUserType());
+        
         }
         
         ProductImp pImp = new ProductImp();
@@ -1057,53 +1079,72 @@ public class AdminInterface extends javax.swing.JFrame {
     }//GEN-LAST:event_jButton4ActionPerformed
 
     private void jButton5ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton5ActionPerformed
-       /* Category category = new Category();
+       Category category = new Category();
         if(!(CName.getText().equals("")&&CID.getText().equals(""))){
             category.setCategoryID(CID.getText());
             category.setCategoryName(CName.getText());
-            category.setProductSellerID(getUserID());
-
+            
+            UserImp userImp = new UserImp();
+            List<User> sellerlist=userImp.list("Seller");
+            for(User sel:sellerlist){
+                if(((String)SellerName.getSelectedItem()).equals(sel.getSellerID())){
+                    category.setProductSellerID(sel.getSellerID());
+                }
+            }
+  
             CategoryImp categoryImp = new CategoryImp();
             categoryImp.Update(category);
-            Load(getUserID());
+            Load();
 
             CID.setText("");
             CName.setText("");
+            SellerName.setSelectedIndex(0);
         }else{
             JOptionPane.showMessageDialog(null, "Please Fill theall the fields!!");
-        }*/
+        }
     }//GEN-LAST:event_jButton5ActionPerformed
 
     private void jButton6ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton6ActionPerformed
-        /*Category category = new Category();
+        Category category = new Category();
         if(!(CName.getText().equals("")&&CID.getText().equals(""))){
             category.setCategoryID(CID.getText());
 
             CategoryImp categoryImp = new CategoryImp();
             categoryImp.Delete(category);
-            Load(getUserID());
+            Load();
 
             CID.setText("");
             CName.setText("");
+            SellerName.setSelectedIndex(0);
         }else{
             JOptionPane.showMessageDialog(null, "Please Fill theall the fields!!");
-        }*/
+        }
     }//GEN-LAST:event_jButton6ActionPerformed
 
     private void jButton7ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton7ActionPerformed
         CID.setText("");
         CName.setText("");
+        SellerName.setSelectedIndex(0);
     }//GEN-LAST:event_jButton7ActionPerformed
 
     private void jButton8ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton8ActionPerformed
-       /* String CategoryID=(JOptionPane.showInputDialog("Enter the category ID"));
+       String CategoryID=(JOptionPane.showInputDialog("Enter the category ID"));
 
         CategoryImp categoryImp = new CategoryImp();
+        UserImp userImp = new UserImp();
         Category category = new Category();
 
-        category=categoryImp.Serch(getUserID(),CategoryID);
+        category=categoryImp.Serch(CategoryID);
         CID.setText(category.getCategoryID());
-        CName.setText(category.getCategoryName());*/
+        CName.setText(category.getCategoryName());
+        
+        List<User> sellerlist=userImp.list("Seller");
+        for(User sel:sellerlist){
+            if(category.getProductSellerID().equals(sel.getSellerID())){
+                SellerName.setSelectedItem(sel.getSellerName());
+            }
+        }
+        
 
     }//GEN-LAST:event_jButton8ActionPerformed
 
@@ -1226,16 +1267,16 @@ public class AdminInterface extends javax.swing.JFrame {
     }//GEN-LAST:event_jLabel25MouseClicked
 
     private void jLabel26MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jLabel26MouseClicked
-        // TODO add your handling code here:
+        this.dispose();
     }//GEN-LAST:event_jLabel26MouseClicked
 
     private void jLabel27MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jLabel27MouseClicked
-        // TODO add your handling code here:
+        this.setState(ICONIFIED);
     }//GEN-LAST:event_jLabel27MouseClicked
 
-    private void CName1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_CName1ActionPerformed
+    private void UNameActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_UNameActionPerformed
         // TODO add your handling code here:
-    }//GEN-LAST:event_CName1ActionPerformed
+    }//GEN-LAST:event_UNameActionPerformed
 
     private void jButton14ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton14ActionPerformed
         // TODO add your handling code here:
@@ -1250,20 +1291,46 @@ public class AdminInterface extends javax.swing.JFrame {
     }//GEN-LAST:event_jButton16ActionPerformed
 
     private void jButton17ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton17ActionPerformed
-        // TODO add your handling code here:
+        User user = new User();
+        if(!(UID.getText().equals("")&&UName.getText().equals("")&&UAddress.getText().equals("")&&UContact.getText().equals("")&&Password.getText().equals(""))&&CPassword.getText().equals(Password.getText())){
+            user.setSellerID(UID.getText());
+            user.setSellerName(UName.getText());
+            user.setSellerAddress(UAddress.getText());
+            user.setContacatNo(Integer.parseInt(UContact.getText()));
+            user.setUserType((String) UserType.getSelectedItem());
+            user.setPassword(Password.getText());
+            
+ 
+            UserImp userImp = new UserImp();
+            userImp.Add(user);
+            Load();
+
+            UID.setText("");
+            UName.setText("");
+            UAddress.setText("");
+            UContact.setText("");
+
+        }else{
+            JOptionPane.showMessageDialog(null, "Please Fill the all the fields!!");
+        }
+        
     }//GEN-LAST:event_jButton17ActionPerformed
 
-    private void SellerName1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_SellerName1ActionPerformed
+    private void UserTypeActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_UserTypeActionPerformed
         // TODO add your handling code here:
-    }//GEN-LAST:event_SellerName1ActionPerformed
+    }//GEN-LAST:event_UserTypeActionPerformed
 
-    private void CName2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_CName2ActionPerformed
+    private void UAddressActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_UAddressActionPerformed
         // TODO add your handling code here:
-    }//GEN-LAST:event_CName2ActionPerformed
+    }//GEN-LAST:event_UAddressActionPerformed
 
-    private void CName3ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_CName3ActionPerformed
+    private void UContactActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_UContactActionPerformed
         // TODO add your handling code here:
-    }//GEN-LAST:event_CName3ActionPerformed
+    }//GEN-LAST:event_UContactActionPerformed
+
+    private void jButton18ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton18ActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_jButton18ActionPerformed
 
     /**
      * @param args the command line arguments
@@ -1303,20 +1370,22 @@ public class AdminInterface extends javax.swing.JFrame {
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JPanel AdminDashboard;
     private javax.swing.JTextField CID;
-    private javax.swing.JTextField CID1;
     private javax.swing.JTextField CName;
-    private javax.swing.JTextField CName1;
-    private javax.swing.JTextField CName2;
-    private javax.swing.JTextField CName3;
+    private javax.swing.JPasswordField CPassword;
     private javax.swing.JTable CTable;
     private javax.swing.JComboBox PCategory;
     private javax.swing.JTextField PID;
     private javax.swing.JTextField PName;
     private javax.swing.JTable PTable;
+    private javax.swing.JPasswordField Password;
     private javax.swing.JTextField Quantity;
     private javax.swing.JComboBox SellerName;
-    private javax.swing.JComboBox SellerName1;
+    private javax.swing.JTextField UAddress;
+    private javax.swing.JTextField UContact;
+    private javax.swing.JTextField UID;
+    private javax.swing.JTextField UName;
     private javax.swing.JTable UTable;
+    private javax.swing.JComboBox UserType;
     private javax.swing.JButton jButton1;
     private javax.swing.JButton jButton10;
     private javax.swing.JButton jButton11;
@@ -1326,6 +1395,7 @@ public class AdminInterface extends javax.swing.JFrame {
     private javax.swing.JButton jButton15;
     private javax.swing.JButton jButton16;
     private javax.swing.JButton jButton17;
+    private javax.swing.JButton jButton18;
     private javax.swing.JButton jButton2;
     private javax.swing.JButton jButton3;
     private javax.swing.JButton jButton4;
@@ -1379,8 +1449,6 @@ public class AdminInterface extends javax.swing.JFrame {
     private javax.swing.JPanel jPanel4;
     private javax.swing.JPanel jPanel5;
     private javax.swing.JPanel jPanel6;
-    private javax.swing.JPasswordField jPasswordField1;
-    private javax.swing.JPasswordField jPasswordField2;
     private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JScrollPane jScrollPane2;
     private javax.swing.JScrollPane jScrollPane3;

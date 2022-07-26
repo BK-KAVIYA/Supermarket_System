@@ -13,6 +13,7 @@ import java.util.ArrayList;
 import java.util.List;
 import java.util.logging.Level;
 import java.util.logging.Logger;
+import javax.swing.JOptionPane;
 
 /**
  *
@@ -26,22 +27,53 @@ public class UserImp implements UserDAO{
     java.sql.Connection conn=obj.getConnection();
 
     @Override
-    public void Add(User seller) {
+    public void Add(User user) {
+        String UserTable=null;
+        int userType=0;
+        try {
+            if("Admin".equals(user.getUserType())){
+                UserTable="admin";
+                userType=1;
+            }else if("Seller".equals(user.getUserType())){
+                UserTable="seller";
+                userType=2;
+            }else{
+                UserTable="Cheshire";
+                userType=3;
+            }
+            String sql="Insert into "+UserTable+" Values(?,?,?,?)";
+            pst=conn.prepareStatement(sql);
+            pst.setString(1,user.getSellerID());
+            pst.setString(2,user.getSellerName());
+            pst.setString(3,user.getSellerAddress());
+            pst.setInt(4,user.getContacatNo());
+            pst.executeUpdate();
+            
+            String sql1="Insert into user Values(?,?,?)";
+            pst1=conn.prepareStatement(sql1);
+            pst1.setString(1, user.getSellerID());
+            pst1.setString(2, user.getPassword());
+            pst1.setInt(3, userType);
+            pst1.executeUpdate();
+            
+            JOptionPane.showMessageDialog(null,"New User is added!!");
+        } catch (SQLException ex) {
+            Logger.getLogger(UserImp.class.getName()).log(Level.SEVERE, null, ex);
+        }
+    }
+
+    @Override
+    public void Update(User user) {
         throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
     }
 
     @Override
-    public void Update(User seller) {
+    public void Delete(User user) {
         throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
     }
 
     @Override
-    public void Delete(User seller) {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
-    }
-
-    @Override
-    public Product Serch(User seller) {
+    public Product Serch(User user) {
         throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
     }
 
@@ -72,6 +104,32 @@ public class UserImp implements UserDAO{
         
          return list;
     }
+
+    @Override
+    public List<User> Userlist() {
+        List<User> list =new ArrayList<User>();
+         try {
+            
+            String sql="Select * from userrolle;";
+            pst=conn.prepareStatement(sql);
+            ResultSet rs=pst.executeQuery();
+            
+            while(rs.next()){
+                User seller = new User();
+                seller.setUserRolle(rs.getInt("UserRolleID"));
+                seller.setUserType(rs.getString("UserType"));              
+                list.add(seller);
+            
+            }
+            
+           
+        } catch (SQLException ex) {
+            Logger.getLogger(CategoryImp.class.getName()).log(Level.SEVERE, null, ex);
+        }
+        
+         return list;
+    }
+
 
     
 }
