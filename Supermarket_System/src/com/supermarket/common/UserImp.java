@@ -73,8 +73,39 @@ public class UserImp implements UserDAO{
     }
 
     @Override
-    public Product Serch(User user) {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+    public User Serch(String userID) {
+        String TableName=null;
+        User user = new User();
+        char UserType=userID.charAt(0);
+        switch(UserType){
+            case 'A':
+               TableName="Admin";
+                break;
+            case 'S':
+               TableName="Seller";
+                break;
+            case 'C':
+                TableName="Cheshire";
+                break;
+        }
+        String sql="select * from "+TableName+"where "+TableName+"ID=?;";
+        try {
+            pst=conn.prepareStatement(sql);
+            pst.setString(1,userID);
+            ResultSet rs=pst.executeQuery();
+            while(rs.next()){
+                user.setSellerID(userID);
+                user.setSellerName(rs.getNString(TableName+"Name"));
+                user.setSellerAddress(TableName+"Address");
+                user.setContacatNo(rs.getInt("ContactNumber"));
+            }
+            
+     
+        } catch (SQLException ex) {
+            Logger.getLogger(CategoryImp.class.getName()).log(Level.SEVERE, null, ex);
+        }
+        
+        return user;
     }
 
     @Override

@@ -1329,7 +1329,22 @@ public class AdminInterface extends javax.swing.JFrame {
     }//GEN-LAST:event_UContactActionPerformed
 
     private void jButton18ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton18ActionPerformed
-        // TODO add your handling code here:
+        String userID=(JOptionPane.showInputDialog("Enter the user ID"));
+
+        CategoryImp categoryImp = new CategoryImp();
+        UserImp userImp = new UserImp();
+        User user = new User();
+
+        user=userImp.Serch(userID);
+        /*CID.setText(category.getCategoryID());
+        CName.setText(category.getCategoryName());
+        
+        List<User> sellerlist=userImp.list("Seller");
+        for(User sel:sellerlist){
+            if(category.getProductSellerID().equals(sel.getSellerID())){
+                SellerName.setSelectedItem(sel.getSellerName());
+            }
+        }*/
     }//GEN-LAST:event_jButton18ActionPerformed
 
     /**
