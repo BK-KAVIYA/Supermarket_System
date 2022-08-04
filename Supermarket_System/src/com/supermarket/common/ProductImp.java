@@ -21,19 +21,20 @@ public class ProductImp implements ProductDAO{
     @Override
     public void Add(Product product) {
         String CategoryID=null;
-        String sql="Insert into product Values(?,?,?,?);";
+        String sql="Insert into product Values(?,?,?,?,?);";
         try {
             pst=conn.prepareStatement(sql);
             pst.setString(1,product.getProductID());
             pst.setString(2,product.getProductName());
             pst.setInt(3,product.getQuantity());
+            pst.setDouble(4,product.getPrice());
             String sql1="Select * from productcategory where CategoryName='"+product.getProductCategoryID()+"'";
             pst1=conn.prepareStatement(sql1);
             ResultSet rs=pst1.executeQuery();
             while(rs.next()){
                 CategoryID=rs.getString("CategoryID");
             }
-            pst.setString(4,CategoryID);
+            pst.setString(5,CategoryID);
             pst.executeUpdate();
             JOptionPane.showMessageDialog(null,"Data recode is added!!");
         } catch (SQLException ex) {
@@ -55,13 +56,14 @@ public class ProductImp implements ProductDAO{
             }
             
             try {
-                String sql="Update product set ProductID=?,ProductName=?,Quantity=?,ProductCategoryID=? where ProductID=?;";
+                String sql="Update product set ProductID=?,ProductName=?,Quantity=?,Price=?,ProductCategoryID=? where ProductID=?;";
                 pst=conn.prepareStatement(sql);
                 pst.setString(1,product.getProductID());
                 pst.setString(2,product.getProductName());
                 pst.setInt(3,product.getQuantity());
-                pst.setString(4,CategoryID);
-                pst.setString(5,product.getProductID());
+                pst.setDouble(4,product.getPrice());
+                pst.setString(5,CategoryID);
+                pst.setString(6,product.getProductID());
                 pst.executeUpdate();
                 JOptionPane.showMessageDialog(null,"Data recode is added!!");
             } catch (SQLException ex) {
@@ -85,6 +87,7 @@ public class ProductImp implements ProductDAO{
                 product.setProductID(rs.getString("ProductID"));
                 product.setProductName(rs.getString("ProductName"));
                 product.setQuantity(rs.getInt("Quantity"));
+                product.setPrice(rs.getDouble("Price"));
                  String sql1="select * from productcategory where CategoryID=?";
                 pst1=conn.prepareStatement(sql1);
                 pst1.setString(1,rs.getString("ProductCategoryID") );
@@ -118,6 +121,7 @@ public class ProductImp implements ProductDAO{
                 product.setProductID(rs.getString("ProductID"));
                 product.setProductName(rs.getString("ProductName"));
                 product.setQuantity(rs.getInt("Quantity"));
+                product.setPrice(rs.getDouble("Price"));
                 product.setProductCategoryID(rs.getString("ProductCategoryID"));
                 
                 list.add(product);

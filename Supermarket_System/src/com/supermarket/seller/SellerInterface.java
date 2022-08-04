@@ -63,7 +63,7 @@ public class SellerInterface extends javax.swing.JFrame {
         DefaultTableModel PDFT=(DefaultTableModel) PTable.getModel();
         PDFT.setRowCount(0);
         for(Product pt:list1){
-            PDFT.addRow(new Object[]{pt.getProductID(),pt.getProductName(),pt.getQuantity(),pt.getProductCategoryID()});
+            PDFT.addRow(new Object[]{pt.getProductID(),pt.getProductName(),pt.getQuantity(),pt.getPrice(),pt.getProductCategoryID()});
         }
         
         
@@ -123,6 +123,8 @@ public class SellerInterface extends javax.swing.JFrame {
         jButton12 = new javax.swing.JButton();
         jScrollPane2 = new javax.swing.JScrollPane();
         PTable = new javax.swing.JTable();
+        jLabel23 = new javax.swing.JLabel();
+        Price = new javax.swing.JTextField();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setMaximumSize(new java.awt.Dimension(979, 700));
@@ -419,16 +421,25 @@ public class SellerInterface extends javax.swing.JFrame {
 
         PTable.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
-                {null, null, null, null},
-                {null, null, null, null},
-                {null, null, null, null},
-                {null, null, null, null}
+                {null, null, null, null, null},
+                {null, null, null, null, null},
+                {null, null, null, null, null},
+                {null, null, null, null, null}
             },
             new String [] {
-                "Product ID", "Product Name", "Quantity", "Product Category"
+                "Product ID", "Product Name", "Quantity", "Price", "Product Category"
             }
         ));
         jScrollPane2.setViewportView(PTable);
+
+        jLabel23.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
+        jLabel23.setText("Price");
+
+        Price.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                PriceActionPerformed(evt);
+            }
+        });
 
         javax.swing.GroupLayout jPanel4Layout = new javax.swing.GroupLayout(jPanel4);
         jPanel4.setLayout(jPanel4Layout);
@@ -443,44 +454,44 @@ public class SellerInterface extends javax.swing.JFrame {
                                 .addComponent(jLabel18)
                                 .addGap(55, 55, 55)
                                 .addComponent(PID, javax.swing.GroupLayout.PREFERRED_SIZE, 250, javax.swing.GroupLayout.PREFERRED_SIZE))
-                            .addGroup(jPanel4Layout.createSequentialGroup()
-                                .addComponent(jButton8)
-                                .addGap(45, 45, 45)
-                                .addComponent(jButton9)
-                                .addGap(37, 37, 37)
-                                .addComponent(jButton10)
-                                .addGap(41, 41, 41)
-                                .addComponent(jButton11))
                             .addGroup(jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
+                                .addGroup(javax.swing.GroupLayout.Alignment.LEADING, jPanel4Layout.createSequentialGroup()
+                                    .addComponent(jButton8)
+                                    .addGap(45, 45, 45)
+                                    .addComponent(jButton9)
+                                    .addGap(37, 37, 37)
+                                    .addComponent(jButton10)
+                                    .addGap(41, 41, 41)
+                                    .addComponent(jButton11))
                                 .addGroup(javax.swing.GroupLayout.Alignment.LEADING, jPanel4Layout.createSequentialGroup()
                                     .addComponent(jLabel21)
                                     .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                                     .addComponent(PCategory, 0, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
                                 .addGroup(javax.swing.GroupLayout.Alignment.LEADING, jPanel4Layout.createSequentialGroup()
-                                    .addComponent(jLabel20)
-                                    .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                                    .addComponent(Quantity, javax.swing.GroupLayout.PREFERRED_SIZE, 250, javax.swing.GroupLayout.PREFERRED_SIZE))
-                                .addGroup(javax.swing.GroupLayout.Alignment.LEADING, jPanel4Layout.createSequentialGroup()
-                                    .addComponent(jLabel19)
+                                    .addGroup(jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                        .addComponent(jLabel19)
+                                        .addComponent(jLabel20)
+                                        .addComponent(jLabel23))
                                     .addGap(34, 34, 34)
-                                    .addComponent(PName, javax.swing.GroupLayout.PREFERRED_SIZE, 250, javax.swing.GroupLayout.PREFERRED_SIZE)))))
+                                    .addGroup(jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                        .addComponent(Price)
+                                        .addComponent(Quantity)
+                                        .addGroup(jPanel4Layout.createSequentialGroup()
+                                            .addComponent(PName, javax.swing.GroupLayout.PREFERRED_SIZE, 250, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                            .addGap(0, 0, Short.MAX_VALUE)))))))
                     .addGroup(jPanel4Layout.createSequentialGroup()
                         .addGap(43, 43, 43)
                         .addGroup(jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addComponent(jLabel22)
                             .addComponent(jLabel17)
-                            .addComponent(jButton12))))
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                            .addComponent(jButton12)
+                            .addComponent(jScrollPane2, javax.swing.GroupLayout.PREFERRED_SIZE, 553, javax.swing.GroupLayout.PREFERRED_SIZE))))
+                .addContainerGap(54, Short.MAX_VALUE))
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel4Layout.createSequentialGroup()
-                .addGroup(jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(jPanel4Layout.createSequentialGroup()
-                        .addGap(29, 29, 29)
-                        .addComponent(jLabel14, javax.swing.GroupLayout.PREFERRED_SIZE, 267, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                        .addComponent(jLabel15, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE))
-                    .addGroup(jPanel4Layout.createSequentialGroup()
-                        .addContainerGap(56, Short.MAX_VALUE)
-                        .addComponent(jScrollPane2, javax.swing.GroupLayout.PREFERRED_SIZE, 553, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                .addGap(29, 29, 29)
+                .addComponent(jLabel14, javax.swing.GroupLayout.PREFERRED_SIZE, 267, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addComponent(jLabel15, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(0, 0, 0)
                 .addComponent(jLabel16)
                 .addGap(21, 21, 21))
@@ -509,6 +520,10 @@ public class SellerInterface extends javax.swing.JFrame {
                 .addGroup(jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(Quantity, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(jLabel20))
+                .addGap(21, 21, 21)
+                .addGroup(jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(Price, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(jLabel23))
                 .addGap(18, 18, 18)
                 .addGroup(jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addComponent(jLabel21)
@@ -519,13 +534,13 @@ public class SellerInterface extends javax.swing.JFrame {
                     .addComponent(jButton9)
                     .addComponent(jButton10)
                     .addComponent(jButton11))
-                .addGap(62, 62, 62)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addComponent(jLabel22)
                 .addGap(33, 33, 33)
                 .addComponent(jButton12)
-                .addGap(27, 27, 27)
+                .addGap(29, 29, 29)
                 .addComponent(jScrollPane2, javax.swing.GroupLayout.PREFERRED_SIZE, 114, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(98, Short.MAX_VALUE))
+                .addContainerGap(96, Short.MAX_VALUE))
         );
 
         SellerPnnel.add(jPanel4, "card2");
@@ -609,6 +624,7 @@ public class SellerInterface extends javax.swing.JFrame {
                 product.setProductID(PID.getText());
                 product.setProductName(PName.getText());
                 product.setQuantity(Integer.parseInt(Quantity.getText()));
+                product.setPrice(Double.parseDouble(Price.getText()));
                 product.setProductCategoryID((String) PCategory.getSelectedItem());
                 
                 ProductImp productImp = new ProductImp();
@@ -617,6 +633,7 @@ public class SellerInterface extends javax.swing.JFrame {
                 
                 PID.setText("");
                 PName.setText("");
+                Price.setText("");
                 Quantity.setText("");
                 
         }else{
@@ -646,6 +663,7 @@ public class SellerInterface extends javax.swing.JFrame {
         PID.setText(product.getProductID());
         PName.setText(product.getProductName());
         Quantity.setText(String.valueOf(product.getQuantity()));
+        Price.setText(String.valueOf(product.getPrice()));
         PCategory.setSelectedItem(product.getProductCategoryID());
         
         
@@ -657,6 +675,7 @@ public class SellerInterface extends javax.swing.JFrame {
                 product.setProductID(PID.getText());
                 product.setProductName(PName.getText());
                 product.setQuantity(Integer.parseInt(Quantity.getText()));
+                product.setPrice(Double.parseDouble(Price.getText()));
                 product.setProductCategoryID((String) PCategory.getSelectedItem());
                 
                 ProductImp productImp = new ProductImp();
@@ -666,6 +685,7 @@ public class SellerInterface extends javax.swing.JFrame {
                 PID.setText("");
                 PName.setText("");
                 Quantity.setText("");
+                Price.setText("");
                 PCategory.setSelectedIndex(0);
                 
         }else{
@@ -706,6 +726,7 @@ public class SellerInterface extends javax.swing.JFrame {
                 PID.setText("");
                 PName.setText("");
                 Quantity.setText("");
+                Price.setText("");
                 PCategory.setSelectedIndex(0);
         }else{
             JOptionPane.showMessageDialog(null, "Please Fill theall the fields!!");
@@ -716,6 +737,7 @@ public class SellerInterface extends javax.swing.JFrame {
         PID.setText("");
         PName.setText("");
         Quantity.setText("");
+        Price.setText("");
         PCategory.setSelectedIndex(0);
     }//GEN-LAST:event_jButton11ActionPerformed
 
@@ -730,6 +752,10 @@ public class SellerInterface extends javax.swing.JFrame {
     private void jLabel16MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jLabel16MouseClicked
         // TODO add your handling code here:
     }//GEN-LAST:event_jLabel16MouseClicked
+
+    private void PriceActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_PriceActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_PriceActionPerformed
 
 
     public static void main(String args[]) {
@@ -772,6 +798,7 @@ public class SellerInterface extends javax.swing.JFrame {
     private javax.swing.JTextField PID;
     private javax.swing.JTextField PName;
     private javax.swing.JTable PTable;
+    private javax.swing.JTextField Price;
     private javax.swing.JTextField Quantity;
     private javax.swing.JPanel SellerPnnel;
     private javax.swing.JButton jButton1;
@@ -801,6 +828,7 @@ public class SellerInterface extends javax.swing.JFrame {
     private javax.swing.JLabel jLabel20;
     private javax.swing.JLabel jLabel21;
     private javax.swing.JLabel jLabel22;
+    private javax.swing.JLabel jLabel23;
     private javax.swing.JLabel jLabel3;
     private javax.swing.JLabel jLabel4;
     private javax.swing.JLabel jLabel5;

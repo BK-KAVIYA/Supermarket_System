@@ -10,6 +10,16 @@ public class Product {
     private String ProductName;
     private int Quantity;
     private String ProductCategoryID;
+    private double Price;
+
+    public double getPrice() {
+        return Price;
+    }
+
+    public void setPrice(double Price) {
+        this.Price = Price;
+    }
+    
 
     public String getProductID() {
         return ProductID;

@@ -88,15 +88,15 @@ public class UserImp implements UserDAO{
                 TableName="Cheshire";
                 break;
         }
-        String sql="select * from "+TableName+"where "+TableName+"ID=?;";
+        String sql="select * from "+TableName+" where "+TableName+"ID=?;";
         try {
             pst=conn.prepareStatement(sql);
             pst.setString(1,userID);
             ResultSet rs=pst.executeQuery();
             while(rs.next()){
                 user.setSellerID(userID);
-                user.setSellerName(rs.getNString(TableName+"Name"));
-                user.setSellerAddress(TableName+"Address");
+                user.setSellerName(rs.getString(TableName+"Name"));
+                user.setSellerAddress(rs.getString(TableName+"Address"));
                 user.setContacatNo(rs.getInt("ContactNumber"));
             }
             
