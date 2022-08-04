@@ -1305,11 +1305,31 @@ public class AdminInterface extends javax.swing.JFrame {
     }//GEN-LAST:event_UNameActionPerformed
 
     private void jButton14ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton14ActionPerformed
-        // TODO add your handling code here:
+            UID.setText("");
+            UName.setText("");
+            UAddress.setText("");
+            UserType.setSelectedIndex(0);
+            UContact.setText("");
     }//GEN-LAST:event_jButton14ActionPerformed
 
     private void jButton15ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton15ActionPerformed
-        // TODO add your handling code here:
+        User user = new User();
+        if(!(UID.getText().equals("")&&UName.getText().equals("")&&UAddress.getText().equals("")&&UContact.getText().equals("")&&Password.getText().equals(""))&&CPassword.getText().equals(Password.getText())){
+            user.setSellerID(UID.getText());
+            user.setUserType((String) UserType.getSelectedItem());
+            
+            UserImp userImp = new UserImp();
+            userImp.Delete(user);
+
+            Load();
+
+            UID.setText("");
+            UName.setText("");
+            UAddress.setText("");
+            UserType.setSelectedIndex(0);
+            UContact.setText("");
+        }
+        
     }//GEN-LAST:event_jButton15ActionPerformed
 
     private void jButton16ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton16ActionPerformed
@@ -1331,6 +1351,7 @@ public class AdminInterface extends javax.swing.JFrame {
             UName.setText("");
             UAddress.setText("");
             UContact.setText("");
+            UserType.setSelectedIndex(0);
 
         }else{
             JOptionPane.showMessageDialog(null, "Please Fill the all the fields!!");
@@ -1355,6 +1376,7 @@ public class AdminInterface extends javax.swing.JFrame {
             UID.setText("");
             UName.setText("");
             UAddress.setText("");
+            UserType.setSelectedIndex(0);
             UContact.setText("");
 
         }else{
@@ -1378,7 +1400,6 @@ public class AdminInterface extends javax.swing.JFrame {
     private void jButton18ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton18ActionPerformed
         String userID=(JOptionPane.showInputDialog("Enter the user ID"));
 
-        CategoryImp categoryImp = new CategoryImp();
         UserImp userImp = new UserImp();
         User user = new User();
 
@@ -1387,15 +1408,8 @@ public class AdminInterface extends javax.swing.JFrame {
         UName.setText(user.getSellerName());
         UAddress.setText(user.getSellerAddress());
         UContact.setText(String.valueOf(user.getContacatNo()));
-        /*CID.setText(category.getCategoryID());
-        CName.setText(category.getCategoryName());
-        
-        List<User> sellerlist=userImp.list("Seller");
-        for(User sel:sellerlist){
-            if(category.getProductSellerID().equals(sel.getSellerID())){
-                SellerName.setSelectedItem(sel.getSellerName());
-            }
-        }*/
+        UserType.setSelectedItem(user.getUserType());
+       
     }//GEN-LAST:event_jButton18ActionPerformed
 
     private void PriceActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_PriceActionPerformed

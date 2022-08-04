@@ -64,12 +64,53 @@ public class UserImp implements UserDAO{
 
     @Override
     public void Update(User user) {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+        
+        try {
+            String UserTable=null;
+            if("Admin".equals(user.getUserType())){
+                    UserTable="admin";
+            }else if("Seller".equals(user.getUserType())){
+                    UserTable="seller";
+            }else{
+                    UserTable="Cheshire";
+            }
+                String sql="Update "+UserTable+" set "+UserTable+"ID=?,"+UserTable+"Name=?,"+UserTable+"Address=?,ContactNumber=? where "+UserTable+"ID=?;";
+                pst=conn.prepareStatement(sql);
+                pst.setString(1,user.getSellerID());
+                pst.setString(2,user.getSellerName());
+                pst.setString(3,user.getSellerAddress());
+                pst.setInt(4,user.getContacatNo());
+                pst.setString(5,user.getSellerID());
+
+                pst.executeUpdate();
+                JOptionPane.showMessageDialog(null,"Data recode is Updated!!");
+            } catch (SQLException ex) {
+                JOptionPane.showMessageDialog(null,"Data Insertion Error!!");
+                Logger.getLogger(CategoryImp.class.getName()).log(Level.SEVERE, null, ex);
+            }
     }
 
     @Override
     public void Delete(User user) {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+        String UserTable=null;
+        if("Admin".equals(user.getUserType())){
+                UserTable="admin";
+        }else if("Seller".equals(user.getUserType())){
+                UserTable="seller";
+        }else{
+                UserTable="Cheshire";
+        }
+         try {
+            String sql="Delete from "+UserTable+" where "+UserTable+"ID=?;";
+            pst=conn.prepareStatement(sql);
+            pst.setString(1,user.getSellerID());
+            pst.executeUpdate();
+            
+            JOptionPane.showMessageDialog(null, "Recode Deleted!!");
+        } catch (SQLException ex) {
+            JOptionPane.showMessageDialog(null, "Recode Deletion Error!!");
+            Logger.getLogger(CategoryImp.class.getName()).log(Level.SEVERE, null, ex);
+        }
     }
 
     @Override
@@ -94,6 +135,7 @@ public class UserImp implements UserDAO{
             pst.setString(1,userID);
             ResultSet rs=pst.executeQuery();
             while(rs.next()){
+                user.setUserType(TableName);
                 user.setSellerID(userID);
                 user.setSellerName(rs.getString(TableName+"Name"));
                 user.setSellerAddress(rs.getString(TableName+"Address"));
